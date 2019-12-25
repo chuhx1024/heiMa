@@ -20,5 +20,41 @@
     </swiper>
   </view>
   <!-- 轮播图结束 -->
+  <!-- 导航开始 -->
+  <view class="index_cate">
+    <navigator
+      wx:for="{{cateList}}"
+      wx:key="index"
+      >
+      <image  src="{{item.image_src}}" mode="widthFix"  />
+    </navigator>
+      
+  </view>
+  <!-- 导航结束 -->
+  <!-- 楼层开始 -->
+  <view class="index_floor">
+    <view class="floor_group"
+      wx:for="{{floorList}}"
+      wx:key="index"
+      >
+      <view class="floor_title">
+        <image mode="widthFix"  src="{{item.floor_title.image_src}}"></image>
+      </view>
+      <view class="floor_list">
+        <navigator
+          wx:for="{{item.product_list}}"
+          wx:key="index"
+          >
+          <image  src="{{item.image_src}}" mode="widthFix"  />
+            
+          
+        </navigator>
+          
+      </view>
+    
+    </view>
+  
+  </view>
+  <!-- 楼层结束 -->
 </view>
   

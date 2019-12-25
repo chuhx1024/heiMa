@@ -5,3 +5,23 @@
 .index_swiper swiper image {
   width: 100%;
 }
+.index_cate {
+  display: flex;
+}
+.index_cate navigator {
+  padding: 20rpx;
+  flex: 1;
+}
+.index_cate navigator image {
+  width: 100%;
+}
+.index_floor .floor_group .floor_title image {
+  width: 100%;
+}
+.index_floor .floor_group .floor_list navigator {
+  float: left;
+  width: 33.33%;
+}
+.index_floor .floor_group .floor_list navigator image {
+  width: 100%;
+}
