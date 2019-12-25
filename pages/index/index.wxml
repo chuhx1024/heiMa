@@ -1,4 +1,5 @@
 <view>
   首页
+  <test class="iconfont icon-yuyin"></test>
 </view>
   
