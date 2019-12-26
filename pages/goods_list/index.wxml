@@ -13,6 +13,7 @@
           class="goods_item"
           wx:for="{{goodsList}}"
           wx:key="index"
+          url="/pages/goods_detail/index?goods_id={{item.goods_id}}"
           >
           <view class="goods_img_wrap">
             <image mode="widthFix" src="{{item.goods_small_logo || 'http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000104125947_2_400x400.jpg'}}" />
