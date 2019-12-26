@@ -1,0 +1,46 @@
+<view class="pyg_category">
+<!-- 搜索框开始 -->
+  <SearchInput></SearchInput>
+<!-- 搜索框结束 -->
+<view class="category_container">
+<!-- 左侧菜单开始 -->
+  <scroll-view class="left_menu" scroll-y>
+    <view 
+      class="menu_item {{index === currentIndex ? 'active':''}}"
+      wx:for="{{leftMenuList}}"
+      wx:key="index"
+      bindtap="handleItemTap"
+      data-index="{{index}}"
+      >
+      {{item}}
+    </view>
+  </scroll-view>
+<!-- 左侧菜单结束 -->
+<!-- 右侧内容开始 -->
+  <scroll-view class="right_content" scroll-y>
+    <view 
+      class="goods_group"
+      wx:for="{{rightContent}}"
+      wx:key="index"
+      >
+      <view class="goods_title">
+        <text class="delimiter">/</text>
+        <text class="title">{{item.cat_name}}</text>
+        <text class="delimiter">/</text>
+      </view>
+      <view class="goods_list">
+        <navigator
+          wx:for="{{item.children}}"
+          wx:key="index"
+          >
+          <image mode="widthFix" src="{{item.cat_icon}}" />
+          <view>
+            {{item.cat_name}}
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </scroll-view>
+<!-- 右侧内容结束 -->
+</view>
+</view>
