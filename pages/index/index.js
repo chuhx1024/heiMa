@@ -1,6 +1,7 @@
 //Page Object
 // 引入用来发送请求的方法
 import { request} from "../../request/index.js"
+import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
   data: {
     // 轮播图数组
@@ -17,30 +18,24 @@ Page({
     this.getFloorList()
   },
   // 发送异步请求  获取轮播图的数据
-  getSwiperList () {
-    request({ url: 'https://api.zbztb.cn/api/public/v1/home/swiperdata'})
-    .then( res => {
-      this.setData({
-        swiperList: res.data.message
-      })
+  async getSwiperList () {
+    let res = await request({ url: 'https://api.zbztb.cn/api/public/v1/home/swiperdata'})
+    this.setData({
+      swiperList: res.data.message
     })
   },
   // 发送异步请求  获取分类导航的数据
-  getCateList () {
-    request({ url: 'https://api.zbztb.cn/api/public/v1/home/catitems'})
-    .then( res => {
-      this.setData({
-        cateList: res.data.message
-      })
+  async getCateList () {
+    let res = await request({ url: 'https://api.zbztb.cn/api/public/v1/home/catitems'})
+    this.setData({
+      cateList: res.data.message
     })
   },
   // 发送异步请求  获取楼层的数据
-  getFloorList () {
-    request({ url: 'https://api.zbztb.cn/api/public/v1/home/floordata'})
-    .then( res => {
-      this.setData({
-        floorList: res.data.message
-      })
+  async getFloorList () {
+    let res = await request({ url: 'https://api.zbztb.cn/api/public/v1/home/floordata'})
+    this.setData({
+      floorList: res.data.message
     })
   },
   onReady: function() {

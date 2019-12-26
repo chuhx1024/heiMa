@@ -1,5 +1,6 @@
 // 引入用来发送请求的方法
 import { request} from "../../request/index.js"
+import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
   /**
@@ -11,7 +12,8 @@ Page({
     // 右侧的商品数据
     rightContent: [],
     // 被点击的左侧的菜单的索引
-    currentIndex: 0
+    currentIndex: 0,
+    scrollTop: 0
   },
   // 接口获取的数据
   cates: [],
@@ -19,24 +21,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCates()
+    const Cates = wx.getStorageSync('cates');
+    if (!Cates) {
+      this.getCates()
+    } else {
+      if(Date.now() - Cates.time > 1000 * 10) {
+        this.getCates()
+      } else {
+        this.cates = Cates.data
+        // 构造左侧的大菜单数据
+        let leftMenuList = this.cates.map((item => {
+          return item.cat_name
+        }))
+        // 构造默认的右侧的商品数据
+        let rightContent = this.cates[0].children
+        this.setData({
+          leftMenuList,
+          rightContent
+        })
+        }
+
+    }
   },
   // 获取分类数据
-  getCates () {
-    request({ url: 'https://api.zbztb.cn/api/public/v1/categories'})
-    .then( res => {
-      this.cates = res.data.message
-      console.log(this.cates)
-      // 构造左侧的大菜单数据
-      let leftMenuList = this.cates.map((item => {
-        return item.cat_name
-      }))
-      // 构造默认的右侧的商品数据
-      let rightContent = this.cates[0].children
-      this.setData({
-        leftMenuList,
-        rightContent
-      })
+  async getCates () {
+    let res = await request({ url: 'https://api.zbztb.cn/api/public/v1/categories'})
+    this.cates = res.data.message
+    console.log(this.cates)
+    wx.setStorageSync('cates', {time: Date.now(), data:this.cates})
+      
+    // 构造左侧的大菜单数据
+    let leftMenuList = this.cates.map((item => {
+      return item.cat_name
+    }))
+    // 构造默认的右侧的商品数据
+    let rightContent = this.cates[0].children
+    this.setData({
+      leftMenuList,
+      rightContent
     })
   },
   // 左侧的点击事件
@@ -45,7 +67,8 @@ Page({
     let rightContent = this.cates[currentIndex].children
     this.setData({
       currentIndex,
-      rightContent
+      rightContent,
+      scrollTop: 0
     })
   },
   /**
