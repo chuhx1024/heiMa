@@ -59,11 +59,7 @@ Page({
   },
   // 获取商品列表的数据
   async getGoodsList () {
-    wx.showLoading({
-      title: '加载中',
-    })
     let res = await request({url: 'https://api.zbztb.cn/api/public/v1/goods/search', data: this.QueryParams})
-    wx.hideLoading()
     console.log(res)
     const {total} = res.data.message
     this.TotalPages = Math.ceil(total/this.QueryParams.pageSize)

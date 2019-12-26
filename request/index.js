@@ -1,4 +1,8 @@
 export const request = (params) => {
+  wx.showLoading({
+    title: '加载中',
+    mask: true
+  })
   return new Promise((resolve, reject) => {
     wx.request({
       ...params,
@@ -7,7 +11,10 @@ export const request = (params) => {
       },
       fail: (err) => {
         reject(err)
+      },
+      complete: () => {
+        wx.hideLoading()
       }
-    });
+    })
   })
 }
