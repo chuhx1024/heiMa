@@ -32,6 +32,7 @@
         <navigator
           wx:for="{{item.children}}"
           wx:key="index"
+          url="/pages/goods_list/index?cid={{item.cat_id}}"
           >
           <image mode="widthFix" src="{{item.cat_icon}}" />
           <view>
