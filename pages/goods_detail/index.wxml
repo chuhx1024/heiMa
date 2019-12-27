@@ -1,2 +1,30 @@
-<!--pages/goods_detail/index.wxml-->
-<text>pages/goods_detail/index.wxml</text>
+<view class="goods_detail_index">
+  <view class="detail_swiper">
+    <swiper
+      autoplay
+      indicatorDots
+      circular
+      >
+      <swiper-item 
+        wx:for="{{goodsObj.pics}}"
+        wx:key="index"
+        >
+        <navigator>
+          <image mode="widthFix" src="{{item.pics_mid}}" />
+        </navigator>
+      </swiper-item>
+        
+    </swiper>
+  </view>
+  <view class="detail_price">${{goodsObj.goods_price}}</view>
+  <view class="detail_name_row">
+    <view class="name_row_text">{{goodsObj.goods_name}}</view>
+    <view class="name_row_collect">
+      <text class="iconfont icon-jushoucang"></text>
+      <view class="collect_text">收藏</view>
+    </view>
+  </view>
+  
+
+
+</view>

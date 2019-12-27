@@ -29,8 +29,13 @@ Page({
   },
   // 获取商品的详情数据
   async getGoodsDetial (goods_id) {
-    let res = await request({url:'https://api.zbztb.cn/api/public/v1/goods/detail', data:{goods_id}})
-    console.log(res, 999)
+    // let res = await request({url:'https://api.zbztb.cn/api/public/v1/goods/detail', data:{goods_id}})
+    // console.log(res, 999)
+    // wx.setStorageSync('key', res)
+    let res = wx.getStorageSync('key')
+    this.setData({
+      goodsObj: res.data.message
+    })
 
   },
   /**

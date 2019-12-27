@@ -1,1 +1,20 @@
-/* pages/goods_detail/index.wxss */
+.goods_detail_index .detail_swiper swiper {
+  height: 65vw;
+  text-align: center;
+}
+.goods_detail_index .detail_swiper swiper image {
+  width: 70%;
+}
+.goods_detail_index .detail_price {
+  color: var(--themeColor);
+}
+.goods_detail_index .detail_name_row {
+  display: flex;
+}
+.goods_detail_index .detail_name_row .name_row_text {
+  flex: 8;
+}
+.goods_detail_index .detail_name_row .name_row_collect {
+  flex: 2;
+  text-align: center;
+}
