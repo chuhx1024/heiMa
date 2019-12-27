@@ -14,6 +14,16 @@ Page({
   onLoad: function (options) {
 
   },
+  // 获取用户的收货地址
+  handleChooseAddress () {
+    wx.chooseAddress({
+      success: (res) => {
+        console.log(res)
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
