@@ -9,16 +9,35 @@
     }
   }
   .detail_price {
-    color: var(--themeColor)
+    color: var(--themeColor);
+    font-weight: 600;
+    padding: 15rpx;
+    font-size: 32rpx;
   }
   .detail_name_row {
     display: flex;
+    padding: 15rpx;
     .name_row_text {
       flex: 8;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
     .name_row_collect {
       flex: 2;
       text-align: center;
+    }
+  }
+  .detail_info {
+    .info_title {
+      font-size: 32rpx;
+      color: var(--themeColor);
+      font-weight: 600;
+      padding: 20rpx;
+    }
+    .info_content {
+
     }
   }
 

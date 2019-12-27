@@ -8,6 +8,8 @@
       <swiper-item 
         wx:for="{{goodsObj.pics}}"
         wx:key="index"
+        bindtap="handlePrevewImage"
+        data-index="{{index}}"
         >
         <navigator>
           <image mode="widthFix" src="{{item.pics_mid}}" />
@@ -22,6 +24,12 @@
     <view class="name_row_collect">
       <text class="iconfont icon-jushoucang"></text>
       <view class="collect_text">收藏</view>
+    </view>
+  </view>
+  <view class="detail_info">
+    <view class="info_title">图文详情</view>
+    <view class="info_content">
+      <rich-text nodes="{{goodsObj.goods_introduce}}"></rich-text>
     </view>
   </view>
   

@@ -31,52 +31,23 @@ Page({
   async getGoodsDetial (goods_id) {
     // let res = await request({url:'https://api.zbztb.cn/api/public/v1/goods/detail', data:{goods_id}})
     // console.log(res, 999)
-    // wx.setStorageSync('key', res)
+    // // wx.setStorageSync('key', res)
     let res = wx.getStorageSync('key')
     this.setData({
       goodsObj: res.data.message
     })
 
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 点击轮播图 放大预览功能
+  handlePrevewImage (e) {
+    let index = e.currentTarget.dataset.index
+    let urls = this.data.goodsObj.pics.map(item => {
+      return item.pics_mid
+    })
+    wx.previewImage({
+      current: urls[index],
+      urls: urls
+    });
+      
   }
 })

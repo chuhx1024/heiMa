@@ -7,14 +7,28 @@
 }
 .goods_detail_index .detail_price {
   color: var(--themeColor);
+  font-weight: 600;
+  padding: 15rpx;
+  font-size: 32rpx;
 }
 .goods_detail_index .detail_name_row {
   display: flex;
+  padding: 15rpx;
 }
 .goods_detail_index .detail_name_row .name_row_text {
   flex: 8;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .goods_detail_index .detail_name_row .name_row_collect {
   flex: 2;
   text-align: center;
+}
+.goods_detail_index .detail_info .info_title {
+  font-size: 32rpx;
+  color: var(--themeColor);
+  font-weight: 600;
+  padding: 20rpx;
 }
