@@ -16,13 +16,46 @@ Page({
   },
   // 获取用户的收货地址
   handleChooseAddress () {
-    wx.chooseAddress({
-      success: (res) => {
-        console.log(res)
+    // 获取用户的权限
+    wx.getSetting({
+      success: (result) => {
+        // 获取用户的权限状态
+        const scopeAddress = result.authSetting['scope.address']
+        console.log(result)
+        console.log(scopeAddress)
+        if (scopeAddress === true || scopeAddress === undefined) {
+          wx.chooseAddress({
+            success: (result) => {
+              console.log(123)
+              console.log(result)
+            },
+            fail: () => {
+            },
+            complete: () => {}
+          });
+        } else { // 没有权限 就诱导用户打开授权页面
+          wx.openSetting({
+            success: (result) => {
+              wx.chooseAddress({
+                success: (result) => {
+                  console.log(123)
+                  console.log(result)
+                },
+                fail: () => {
+                },
+                complete: () => {}
+              });
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+            
+        }
       },
       fail: () => {},
       complete: () => {}
     });
+      
   },
 
   /**
