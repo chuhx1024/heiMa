@@ -49,7 +49,7 @@
   <view class="cart_btm_tool">
     <view class="ckt_all">
       <checkbox-group>
-        <checkbox checked="{{allChecked}}">
+        <checkbox bindtap="handleAllChecked" checked="{{allChecked}}">
           全选
         </checkbox> 
       </checkbox-group>

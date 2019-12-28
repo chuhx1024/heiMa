@@ -60,6 +60,15 @@ Page({
     cartsList[index].checked = !cartsList[index].checked
     this.setCart(cartsList)
   },
+  // 全选按钮的点击事件
+  handleAllChecked () {
+    console.log(123)
+    let { cartsList, allChecked } = this.data
+    cartsList.forEach(item => {
+      item.checked = !allChecked
+    })
+    this.setCart(cartsList)
+  },
   // 设置购物车的属性是  重新计算 底部数据 和全选状态 和购买数量
   setCart (cartsList) {
     const allChecked = cartsList.length !== 0 ? cartsList.every((item) => {
