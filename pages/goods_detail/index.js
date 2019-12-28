@@ -60,6 +60,7 @@ Page({
     if (index === -1) {
       // 不存在 第一次添加
       this.data.goodsObj.num = 1
+      this.data.goodsObj.checked = true
       cart.push(this.data.goodsObj)
     } else {
       // 存在 执行 num++
