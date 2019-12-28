@@ -1,4 +1,6 @@
-// pages/cart/index.js
+// pages/cart/index.js 
+import {getSetting, chooseAddress, openSetting} from '../../utils/asyncWx'
+import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
   /**
@@ -15,47 +17,18 @@ Page({
 
   },
   // 获取用户的收货地址
-  handleChooseAddress () {
+  async handleChooseAddress () {
     // 获取用户的权限
-    wx.getSetting({
-      success: (result) => {
-        // 获取用户的权限状态
-        const scopeAddress = result.authSetting['scope.address']
-        console.log(result)
-        console.log(scopeAddress)
-        if (scopeAddress === true || scopeAddress === undefined) {
-          wx.chooseAddress({
-            success: (result) => {
-              console.log(123)
-              console.log(result)
-            },
-            fail: () => {
-            },
-            complete: () => {}
-          });
-        } else { // 没有权限 就诱导用户打开授权页面
-          wx.openSetting({
-            success: (result) => {
-              wx.chooseAddress({
-                success: (result) => {
-                  console.log(123)
-                  console.log(result)
-                },
-                fail: () => {
-                },
-                complete: () => {}
-              });
-            },
-            fail: () => {},
-            complete: () => {}
-          });
-            
-        }
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
+    let res1 = await getSetting()
+    const scopeAddress = res1.authSetting['scope.address']
+    if (scopeAddress === true || scopeAddress === undefined) {
+      let res2 = await chooseAddress()
+      console.log(res2)
+    } else { // 没有权限 就诱导用户打开授权页面
+      await openSetting()
+      let res2 = await chooseAddress()
+      console.log(res2)
+    }
   },
 
   /**
