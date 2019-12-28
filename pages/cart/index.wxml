@@ -16,33 +16,36 @@
   <!-- 购物车内容开始 -->
   <view class="cart_content">
     <view class="cart_title">购物车</view>
-    <view class="cart_group">
-      <view class="cart_item"
-        wx:for="{{cartsList}}"
-        wx:key="index"
-        >
-        <view class="cart_item_ckb">
-          <checkbox-group data-id="{{item.goods_id}}" bindchange="handleItemChange" >
-            <checkbox checked="{{item.checked}}">
-            </checkbox>
-          </checkbox-group>
-        </view>
-        <navigator class="cart_item_img">
-          <image mode="widthFix" src="{{item.goods_small_logo}}"/>
-        </navigator>
-        <view class="cart_item_info">
-          <view class="item_info_name">{{item.goods_name}}</view>
-          <view class="item_info_price">
-            <view class="goods_price">${{item.goods_price}}</view>
-            <view class="cart_num_tool">
-              <view class="num_edit">-</view>
-              <view class="goods_num">{{item.num}}</view>
-              <view class="num_edit">+</view>
+    <block wx:if="{{cartsList.length !== 0}}">
+      <view class="cart_group">
+        <view class="cart_item"
+          wx:for="{{cartsList}}"
+          wx:key="index"
+          >
+          <view class="cart_item_ckb">
+            <checkbox-group data-id="{{item.goods_id}}" bindchange="handleItemChange" >
+              <checkbox checked="{{item.checked}}">
+              </checkbox>
+            </checkbox-group>
+          </view>
+          <navigator class="cart_item_img">
+            <image mode="widthFix" src="{{item.goods_small_logo}}"/>
+          </navigator>
+          <view class="cart_item_info">
+            <view class="item_info_name">{{item.goods_name}}</view>
+            <view class="item_info_price">
+              <view class="goods_price">${{item.goods_price}}</view>
+              <view class="cart_num_tool">
+                <view class="num_edit" bindtap="handleNumEdit" data-id="{{item.goods_id}}" data-operation="{{-1}}">-</view>
+                <view class="goods_num">{{item.num}}</view>
+                <view class="num_edit" bindtap="handleNumEdit" data-id="{{item.goods_id}}" data-operation="{{1}}">+</view>
+              </view>
             </view>
           </view>
         </view>
       </view>
-    </view>
+    </block>
+    <block wx:else>购物车为空</block>
   </view>
   <!-- 购物车内容结束 -->
   <!-- 底部的工具栏开始 -->

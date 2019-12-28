@@ -40,3 +40,20 @@ export const getSetting = () => {
   })
 }
 
+// 改造微信的 showModal 函数为 promise
+
+export const showModal = () => {
+  return new Promise((resolve, reject) => {
+    wx.showModal({
+      title: '提示',
+      content: '您是否要删除',
+      success: (result) => {
+        resolve(result)
+      },
+      fail: (err) => {
+        reject(err)
+      }
+    });
+  })
+}
+

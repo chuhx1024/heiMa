@@ -1,5 +1,5 @@
 // pages/cart/index.js 
-import {getSetting, chooseAddress, openSetting} from '../../utils/asyncWx'
+import {getSetting, chooseAddress, openSetting, showModal} from '../../utils/asyncWx'
 import regeneratorRuntime from '../../lib/runtime/runtime';
 Page({
 
@@ -67,6 +67,23 @@ Page({
     cartsList.forEach(item => {
       item.checked = !allChecked
     })
+    this.setCart(cartsList)
+  },
+  // 加减商品数量的操作
+  async handleNumEdit (e) {
+    // 获取商品的id 和 加减区分标识
+    const { id, operation } = e.currentTarget.dataset
+    // 根据商品的id 获取 下标
+    let { cartsList } = this.data
+    const index = cartsList.findIndex(item => item.goods_id === id)
+    if (cartsList[index].num === 1 && operation === -1) {
+      let res = await showModal()
+      if (res.confirm) {
+        cartsList.splice(index, 1)
+      }
+    } else {
+      cartsList[index].num += operation
+    }
     this.setCart(cartsList)
   },
   // 设置购物车的属性是  重新计算 底部数据 和全选状态 和购买数量
