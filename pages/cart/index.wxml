@@ -1,8 +1,86 @@
 <view class="cart_index">
   <!-- 收货地址开始 -->
   <view class="revice_address_row">
-    <button bindtap="handleChooseAddress" type="primary" plain>获取收货地址</button>
+    <view class="address_content" wx:if="{{address.userName}}">
+      <view class="content_info">
+        <view class="info_name">收货人:{{address.userName}}</view>
+        <view class="info_address">{{address.all}}</view>
+      </view>
+      <view class="content_tel">{{address.telNumber}}</view>
+    </view>
+    <view class="address_btn" wx:else>
+      <button bindtap="handleChooseAddress" type="primary" plain>获取收货地址</button>
+    </view>
   </view>
   <!-- 收货地址结束 -->
+  <!-- 购物车内容开始 -->
+  <view class="cart_content">
+    <view class="cart_title">购物车</view>
+    <view class="cart_group">
+      <view class="cart_item">
+        <view class="cart_item_ckb">
+          <checkbox-group>
+            <checkbox >
+            </checkbox>
+          </checkbox-group>
+        </view>
+        <navigator class="cart_item_img">
+          <image mode="widthFix" src="http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000160455569_1_800x800.jpg"/>
+        </navigator>
+        <view class="cart_item_info">
+          <view class="item_info_name">是的发送到发生阿斯顿发斯蒂芬阿斯顿发顺丰阿斯顿发阿斯顿发阿斯顿发啊啊士大夫阿斯顿发</view>
+          <view class="item_info_price">
+            <view class="goods_price">$9999</view>
+            <view class="cart_num_tool">
+              <view class="num_edit">-</view>
+              <view class="goods_num">10</view>
+              <view class="num_edit">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="cart_item">
+        <view class="cart_item_ckb">
+          <checkbox-group>
+            <checkbox >
+            </checkbox>
+          </checkbox-group>
+        </view>
+        <navigator class="cart_item_img">
+          <image mode="widthFix" src="http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000160455569_1_800x800.jpg"/>
+        </navigator>
+        <view class="cart_item_info">
+          <view class="item_info_name">是的发送到发生阿斯顿发斯蒂芬阿斯顿发顺丰阿斯顿发阿斯顿发阿斯顿发啊啊士大夫阿斯顿发</view>
+          <view class="item_info_price">
+            <view class="goods_price">$9999</view>
+            <view class="cart_num_tool">
+              <view class="num_edit">-</view>
+              <view class="goods_num">10</view>
+              <view class="num_edit">+</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 购物车内容结束 -->
+  <!-- 底部的工具栏开始 -->
+  <view class="cart_btm_tool">
+    <view class="ckt_all">
+      <checkbox-group>
+        <checkbox >
+          全选
+        </checkbox> 
+      </checkbox-group>
+    </view>
+    <view class="price_all">
+      <view class="price_all_num">$999999</view>
+      <view class="price_all_titel">包含运费</view>
+    </view>
+    <view class="cart_account">
+      结算(2)
+    </view>
+  </view>
 
+  <!-- 底部的工具栏结束 -->
 </view>
